@@ -1,0 +1,67 @@
+{
+  "name": "deliveryman",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Demo : https://hidden-meadow-74120.herokuapp.com/",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qragile/deliveryman.git"
+  },
+  "dependencies": {
+    "@blackbox-vision/react-qr-reader": "^4.0.0-2",
+    "@zxing/browser": "0.0.9",
+    "@zxing/library": "^0.18.5",
+    "aws-sdk": "^2.702.0",
+    "babel-node": "0.0.1-security",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.6.0",
+    "eol": "^0.9.1",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "jimp": "^0.16.1",
+    "jsonwebtoken": "^8.5.1",
+    "mailgun-js": "^0.22.0",
+    "mongo": "^0.1.0",
+    "mongoclient": "^1.0.3",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.10.7",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
+    "nodejs": "0.0.0",
+    "proxi": "0.0.1",
+    "qrcode-reader": "^1.0.4",
+    "react-qr-reader": "^2.2.1",
+    "socket.io": "^4.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/node": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/register": "^7.13.16",
+    "babel-core": "^7.0.0-bridge.0",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "nodemon": "^2.0.7"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qragile/deliveryman/ussues"
+  },
+  "homepage": "https://github.com/qragile/deliveryman/amazona#readme",
+  "engines": {
+    "node": "12.4.0",
+    "npm": "6.9.0"
+  }
+}
