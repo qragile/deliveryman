@@ -55,8 +55,6 @@ function ShippingScreen(props) {
             <input type="text" name="country" id="country" onChange={(e) => setCountry(e.target.value)}>
             </input>
           </li>
-
-
           <li>
             <button type="submit" className="button primary">Continue</button>
           </li>

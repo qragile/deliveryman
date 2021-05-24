@@ -30,8 +30,9 @@ import MessageBox from './components/MessageBox';
 import MapScreen from './screens/MapScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import SupportScreen from './screens/SupportScreen';
+import SbyScreen         from './screens/SbyScreen';
+
 import ChatBox from './components/ChatBox';
-import DeliverysScreen from './screens/DeliverysScreen';
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -65,36 +66,42 @@ function App() {
             >
               <i className="fa fa-bars"></i>
             </button>
-            <Link className="brand" to="/">Ecovoy/deliveryman
+            <Link className="brand" to="/">Ecovoy/Delivery
             </Link>
           </div>
+         
           <div>
-            <Route
-              render={({ history }) => (
-                <SearchBox history={history}></SearchBox>
+          {userInfo ? (
+            <Link to="/cart">
+              Shipping
+              {cartItems.length > 0 && (
+                <span className="badge">{cartItems.length}</span>
               )}
-            ></Route>
-          </div>
-          <div>
+            </Link>
+  ) : ( <Link to="/signin"></Link>  )}
             {userInfo ? (
               <div className="dropdown">
                 <Link to="#">
                   {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
                 </Link>
                 <ul className="dropdown-content">
-                <li>
-                    <Link to="/delivery">Checkin</Link>
+                 
+                  <li>
+                    <Link to="/orderhistory">Shippings</Link>
+                  </li>
+                  <li>
+                    <Link to="/dashboard">Dashboard</Link>
                   </li>
                   <li>
                     <Link to="/profile">User Profile</Link>
                   </li>
                   <li>
-                    <Link to="/orderhistory">Shipping</Link>
+                    <Link to="/support">Support</Link>
                   </li>
                   <li>
-                  <Link to="#signout" onClick={signoutHandler}>
-                    Sign Out
-                  </Link>
+                    <Link to="#signout" onClick={signoutHandler}>
+                      Sign Out
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -111,12 +118,35 @@ function App() {
                     <Link to="/productlist/seller">Products</Link>
                   </li>
                   <li>
-                    <Link to="/orderlist/seller">Order</Link>
+                    <Link to="/orderlist/seller">Orders</Link>
                   </li>
                 </ul>
               </div>
             )}
-            
+            {userInfo && userInfo.isAdmin && (
+              <div className="dropdown">
+                <Link to="#admin">
+                  Admin <i className="fa fa-caret-down"></i>
+                </Link>
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to="/dashboard">Dashboard</Link>
+                  </li>
+                  <li>
+                    <Link to="/productlist">Products</Link>
+                  </li>
+                  <li>
+                    <Link to="/orderlist">Orders</Link>
+                  </li>
+                  <li>
+                    <Link to="/userlist">Users</Link>
+                  </li>
+                  <li>
+                    <Link to="/support">Support</Link>
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
         </header>
         <aside className={sidebarIsOpen ? 'open' : ''}>
@@ -159,7 +189,7 @@ function App() {
             exact
           ></Route>
           <Route path="/signin" component={SigninScreen}></Route>
-          <Route path="/delivery" component={DeliverysScreen}></Route>
+          <Route path="/scanner" component={SbyScreen}></Route>          
           <Route path="/register" component={RegisterScreen}></Route>
           <Route path="/shipping" component={ShippingAddressScreen}></Route>
           <Route path="/payment" component={PaymentMethodScreen}></Route>
