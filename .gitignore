@@ -36,3 +36,4 @@ yarn-lock.json
 frontend/package-lock.json
 frontend/yarn-lock.json
 frontend/src/Appcopy.js
+frontend/yarn.lock

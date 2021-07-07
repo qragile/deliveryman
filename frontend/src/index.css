@@ -32,7 +32,7 @@ body {
 }
 header {
   grid-area: header;
-  background-color: #060706;
+  background-color: #f6f8f6;
   color: #060706;
 }
 main {
@@ -101,7 +101,7 @@ button.small {
 }
 /* Header */
 header a {
-  color: #ffffff;
+  color: #067731;
   padding: 1rem;
 }
 a.brand {

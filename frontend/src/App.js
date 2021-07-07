@@ -275,7 +275,7 @@ function App() {
         </main>
         <footer className="row center">
           {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
-          <div>License for Ecovoy Flex</div>{' '}
+          <div>License for Ecovoy</div>{' '}
         </footer>
       </div>
     </BrowserRouter>
