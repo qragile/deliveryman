@@ -77,7 +77,7 @@ function App() {
               {cartItems.length > 0 && (
                 <span className="badge">{cartItems.length}</span>
               )}
-            </Link>
+            </Link> 
   ) : ( <Link to="/signin"></Link>  )}
             {userInfo ? (
               <div className="dropdown">
