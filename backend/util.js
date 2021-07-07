@@ -41,4 +41,29 @@ const isAdmin = (req, res, next) => {
   return res.status(401).send({ message: 'Admin Token is not valid.' });
 };
 
-export { getToken, isAuth, isAdmin };
+const isMeli = (req, res, next) => {
+  console.log(req.user);
+  if (req.user && req.user.isMeli) {
+    return next();
+  }
+  return res.status(401).send({ message: 'Meli Token is not valid.' });
+};
+const getTokenMeli = (user) => {
+  return jwt.sign(
+    {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      isMeli: meliUser.isMeli,
+      license: meliUser.License,
+      acountNumber: meliUser.AcountNumber, 
+    },
+    config.JWT_SECRET,
+    {
+      expiresIn: '48h',
+    }
+  );
+};
+
+export { getToken, getTokenMeli, isAuth, isAdmin, isMeli };

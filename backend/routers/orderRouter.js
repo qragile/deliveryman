@@ -1,5 +1,6 @@
 import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
+
 import Order from '../models/orderModel.js';
 import User from '../models/userModel.js';
 import Product from '../models/productModel.js';
@@ -78,6 +79,23 @@ orderRouter.get(
   expressAsyncHandler(async (req, res) => {
     const orders = await Order.find({ user: req.user._id });
     res.send(orders);
+  })
+);
+orderRouter.post(
+  '/head',
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    if (req.body.orderHead.lenght === 0) {
+      res.status(400).send({ message: 'Error Label Head'});
+    }  else {
+      const order = new Order({
+        orderHead : req.body.orderHead,
+      });
+      const createdOrder = await order.save();
+      res
+        .status(201)
+        .send({ message: 'New Order Head Created', order: createdOrder });
+    }
   })
 );
 

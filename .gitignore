@@ -7,6 +7,7 @@ node_modules
 /node_modules
 uploads/*.jpg
 uploads/*.png
+App2.js
 
 /.pnp
 .pnp.js
@@ -19,6 +20,7 @@ uploads/*.png
 
 # misc
 .DS_Store
+.env
 .env.local
 .env.development.local
 .env.test.local
@@ -33,3 +35,4 @@ package-lock.json
 yarn-lock.json
 frontend/package-lock.json
 frontend/yarn-lock.json
+frontend/src/Appcopy.js

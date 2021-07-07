@@ -4,12 +4,12 @@ import bcrypt from 'bcryptjs';
 import data from '../data.js';
 import User from '../models/userModel.js';
 import { generateToken, isAdmin, isAuth } from '../utils.js';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const userRouter = express.Router();
 
-userRouter.get(
-  '/top-sellers',
-  expressAsyncHandler(async (req, res) => {
+userRouter.get('/top-sellers',expressAsyncHandler(async (req, res) => {
     const topSellers = await User.find({ isSeller: true })
       .sort({ 'seller.rating': -1 })
       .limit(3);
@@ -17,18 +17,15 @@ userRouter.get(
   })
 );
 
-userRouter.get(
-  '/seed',
-  expressAsyncHandler(async (req, res) => {
+userRouter.get('/seed',expressAsyncHandler(async (req, res) => {
     // await User.remove({});
-    const createdUsers = await User.insertMany(data.users);
+    //const createdUsers = await User.insertMany(data.users);
+    const createdUsers =  "API paraa activar los usuarios de la data";
     res.send({ createdUsers });
   })
 );
 
-userRouter.post(
-  '/signin',
-  expressAsyncHandler(async (req, res) => {
+userRouter.post('/signin',expressAsyncHandler(async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
     if (user) {
       if (bcrypt.compareSync(req.body.password, user.password)) {
@@ -38,6 +35,8 @@ userRouter.post(
           email: user.email,
           isAdmin: user.isAdmin,
           isSeller: user.isSeller,
+          isDelivery: user.isDelivery,
+          isMeli: user.isMeli,
           token: generateToken(user),
         });
         return;
@@ -47,9 +46,7 @@ userRouter.post(
   })
 );
 
-userRouter.post(
-  '/register',
-  expressAsyncHandler(async (req, res) => {
+userRouter.post('/register',expressAsyncHandler(async (req, res) => {
     const user = new User({
       name: req.body.name,
       email: req.body.email,
@@ -61,15 +58,14 @@ userRouter.post(
       name: createdUser.name,
       email: createdUser.email,
       isAdmin: createdUser.isAdmin,
-      isSeller: user.isSeller,
+      isDelivery: createdUser.isDelivery,
+      isSeller: createdUser.isSeller,
       token: generateToken(createdUser),
     });
   })
 );
 
-userRouter.get(
-  '/:id',
-  expressAsyncHandler(async (req, res) => {
+userRouter.get('/:id',expressAsyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
     if (user) {
       res.send(user);
@@ -78,10 +74,7 @@ userRouter.get(
     }
   })
 );
-userRouter.put(
-  '/profile',
-  isAuth,
-  expressAsyncHandler(async (req, res) => {
+userRouter.put('/profile',isAuth,expressAsyncHandler(async (req, res) => {
     const user = await User.findById(req.user._id);
     if (user) {
       user.name = req.body.name || user.name;
@@ -98,9 +91,9 @@ userRouter.put(
       const updatedUser = await user.save();
       res.send({
         _id: updatedUser._id,
-        name: updatedUser.name,
         email: updatedUser.email,
         isAdmin: updatedUser.isAdmin,
+        isDelivery: user.isDelivery,
         isSeller: user.isSeller,
         token: generateToken(updatedUser),
       });
@@ -108,21 +101,13 @@ userRouter.put(
   })
 );
 
-userRouter.get(
-  '/',
-  isAuth,
-  isAdmin,
-  expressAsyncHandler(async (req, res) => {
+userRouter.get('/', isAuth, isAdmin, expressAsyncHandler(async (req, res) => {
     const users = await User.find({});
     res.send(users);
   })
 );
 
-userRouter.delete(
-  '/:id',
-  isAuth,
-  isAdmin,
-  expressAsyncHandler(async (req, res) => {
+userRouter.delete('/:id', isAuth, isAdmin, expressAsyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
     if (user) {
       if (user.email === 'admin@example.com') {
@@ -137,18 +122,19 @@ userRouter.delete(
   })
 );
 
-userRouter.put(
-  '/:id',
-  isAuth,
-  isAdmin,
-  expressAsyncHandler(async (req, res) => {
+userRouter.put('/:id', isAuth, isAdmin, expressAsyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
     if (user) {
       user.name = req.body.name || user.name;
+      user.nickName = req.body.nickName || user.nickName;
       user.email = req.body.email || user.email;
       user.isSeller = Boolean(req.body.isSeller);
       user.isAdmin = Boolean(req.body.isAdmin);
-      // user.isAdmin = req.body.isAdmin || user.isAdmin;
+      user.isMeli = Boolean(req.body.isMeli);
+      user.isDelivery = Boolean(req.body.isDelivery);
+      user.isAct = Boolean(req.body.isAct);
+      user.license = req.body.license || user.license;
+      user.acountNumber = req.body.acountNumber ||  user.acountNumber; 
       const updatedUser = await user.save();
       res.send({ message: 'User Updated', user: updatedUser });
     } else {

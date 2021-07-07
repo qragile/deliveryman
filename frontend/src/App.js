@@ -15,6 +15,7 @@ import ProductScreen from './screens/ProductScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
+import ScannerScreen from './screens/ScannerScreen';
 import SigninScreen from './screens/SigninScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
 import OrderListScreen from './screens/OrderListScreen';
@@ -30,9 +31,10 @@ import MessageBox from './components/MessageBox';
 import MapScreen from './screens/MapScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import SupportScreen from './screens/SupportScreen';
-import SbyScreen         from './screens/SbyScreen';
-
 import ChatBox from './components/ChatBox';
+import SincronizaScreen from './screens/SincronizaScreen';
+import DeliveryRoute from './components/DeliveryRoute';
+import ScannerListScreen from './screens/ScannerListScreen';
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -51,6 +53,7 @@ function App() {
     error: errorCategories,
     categories,
   } = productCategoryList;
+
   useEffect(() => {
     dispatch(listProductCategories());
   }, [dispatch]);
@@ -58,45 +61,25 @@ function App() {
     <BrowserRouter>
       <div className="grid-container">
         <header className="row">
-          <div>
-            <button
-              type="button"
-              className="open-sidebar"
-              onClick={() => setSidebarIsOpen(true)}
-            >
-              <i className="fa fa-bars"></i>
-            </button>
-            <Link className="brand" to="/">Ecovoy/Delivery
+        <div>
+          <Link className="brand" to="/" rel="apple-touch-icon">
+             <img src="ecovoyLog1.jpg" height="35px" width="90px"/> 
             </Link>
-          </div>
-         
+            </div>
           <div>
-          {userInfo ? (
-            <Link to="/cart">
-              Shipping
-              {cartItems.length > 0 && (
-                <span className="badge">{cartItems.length}</span>
-              )}
-            </Link> 
-  ) : ( <Link to="/signin"></Link>  )}
+          
+         
             {userInfo ? (
               <div className="dropdown">
                 <Link to="#">
                   {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
                 </Link>
                 <ul className="dropdown-content">
-                 
-                  <li>
-                    <Link to="/orderhistory">Shippings</Link>
-                  </li>
-                  <li>
-                    <Link to="/dashboard">Dashboard</Link>
-                  </li>
                   <li>
                     <Link to="/profile">User Profile</Link>
                   </li>
                   <li>
-                    <Link to="/support">Support</Link>
+                    <Link to="/orderhistory">Order History</Link>
                   </li>
                   <li>
                     <Link to="#signout" onClick={signoutHandler}>
@@ -106,7 +89,7 @@ function App() {
                 </ul>
               </div>
             ) : (
-              <Link to="/signin">Sign In</Link>
+              <Link to="/signin">Signin</Link>
             )}
             {userInfo && userInfo.isSeller && (
               <div className="dropdown">
@@ -115,10 +98,32 @@ function App() {
                 </Link>
                 <ul className="dropdown-content">
                   <li>
+                    <Link to="/productlist/scanner">Picking</Link>
+                  </li>
+                  <li>
                     <Link to="/productlist/seller">Products</Link>
                   </li>
                   <li>
                     <Link to="/orderlist/seller">Orders</Link>
+                  </li>
+                </ul>
+              </div>
+            )}
+            {userInfo && userInfo.isDelivery && (
+              <div className="dropdown">
+                <Link to="#admin">
+                  Delivery <i className="fa fa-caret-down"></i>
+                </Link>
+                <ul className="dropdown-content">
+                
+                  <li>
+                    <Link to="/scanner">Load</Link>
+                  </li>
+                  <li>
+                    <Link to="/scannerList/load">List Load</Link>
+                  </li>
+                  <li>
+                    <Link to="/scannerList/delivery">Delivery</Link>
                   </li>
                 </ul>
               </div>
@@ -133,7 +138,7 @@ function App() {
                     <Link to="/dashboard">Dashboard</Link>
                   </li>
                   <li>
-                    <Link to="/productlist">Products</Link>
+                    <Link to="/productlist">Services</Link>
                   </li>
                   <li>
                     <Link to="/orderlist">Orders</Link>
@@ -189,8 +194,8 @@ function App() {
             exact
           ></Route>
           <Route path="/signin" component={SigninScreen}></Route>
-          <Route path="/scanner" component={SbyScreen}></Route>          
           <Route path="/register" component={RegisterScreen}></Route>
+          <Route path="/scanner" component={ScannerScreen}></Route>
           <Route path="/shipping" component={ShippingAddressScreen}></Route>
           <Route path="/payment" component={PaymentMethodScreen}></Route>
           <Route path="/placeorder" component={PlaceOrderScreen}></Route>
@@ -256,12 +261,21 @@ function App() {
             path="/orderlist/seller"
             component={OrderListScreen}
           ></SellerRoute>
-
+          
+          <Route path="/sincroniza" component={SincronizaScreen} exact></Route>
           <Route path="/" component={HomeScreen} exact></Route>
+          <DeliveryRoute
+            path="/scannerList/load"
+            component={ScannerListScreen}
+          ></DeliveryRoute>
+          <DeliveryRoute
+            path="/scannerList/deliver"
+            component={ScannerListScreen}
+          ></DeliveryRoute>
         </main>
         <footer className="row center">
           {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
-          <div>License for Ecovoy 2021</div>{' '}
+          <div>License for Ecovoy Flex</div>{' '}
         </footer>
       </div>
     </BrowserRouter>

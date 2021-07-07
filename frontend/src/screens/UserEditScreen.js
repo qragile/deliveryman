@@ -13,7 +13,12 @@ export default function UserEditScreen(props) {
   const [email, setEmail] = useState('');
   const [isSeller, setIsSeller] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
-
+  const [isMeli, setIsMeli] = useState(false);
+  const [nickName, setnickName] = useState('');
+  const [isDelivery, setIsDelivery] = useState(false);
+  const [isAct, setIsAct] = useState(false);
+  const [license, setLicense] = useState('');
+  const [acountNumber, setAcountNumber] = useState('');
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
 
@@ -37,14 +42,23 @@ export default function UserEditScreen(props) {
       setEmail(user.email);
       setIsSeller(user.isSeller);
       setIsAdmin(user.isAdmin);
+      setIsMeli(user.isMeli);
+      setnickName(user.nickName);
+      setIsDelivery(user.isDelivery);
+      setIsAct(user.isAct);
+      setLicense(user.license);
+      setAcountNumber(user.acountNumber);
     }
   }, [dispatch, props.history, successUpdate, user, userId]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     // dispatch update user
-    dispatch(updateUser({ _id: userId, name, email, isSeller, isAdmin }));
-  };
+    dispatch(updateUser(
+      { 
+        _id: userId, name, email, isSeller, isAdmin, isDelivery, 
+        license, acountNumber, isMeli, nickName, isAct  }));
+      };
   return (
     <div>
       <form className="form" onSubmit={submitHandler}>
@@ -82,22 +96,80 @@ export default function UserEditScreen(props) {
               ></input>
             </div>
             <div>
-              <label htmlFor="isSeller">Is Seller</label>
+              <label htmlFor="license">License Ecovoy 2021</label>
+              <input
+                id="license"
+                type="text"
+                placeholder="Enter license"
+                value={license}
+                onChange={(e) => setLicense(e.target.value)}
+              ></input>
+            </div>
+            <div>
+            <label htmlFor="acountNumber">Acount Number</label>
+              <input
+                id="acountNumber"
+                type="text"
+                placeholder="Enter acount number "
+                value={acountNumber}
+                onChange={(e) => setAcountNumber(e.target.value)}
+              ></input>
+            </div>
+            <div>
+              <label htmlFor="nickName">NickName</label>
+              <input
+                id="nickName"
+                type="text"
+                placeholder="Enter nick name"
+                value={nickName}
+                onChange={(e) => setnickName(e.target.value)}
+              ></input>
+            </div>
+            <div>
+              <label htmlFor="isMeli">
+              <input
+                id="isMeli"
+                label="MarcadoLibre"
+                type="checkbox"
+                checked={isMeli}
+                onChange={(e) => setIsMeli(e.target.checked)}
+              ></input>Is MercadoLibre</label>
+            </div>
+            <div>
+              <label htmlFor="isDelivery">
+              <input
+                id="isDelivery"
+                type="checkbox"
+                checked={isDelivery}
+                onChange={(e) => setIsDelivery(e.target.checked)}
+              ></input>Is DeliveryMan</label>
+            </div>
+            <div>
+              <label htmlFor="isSeller">
               <input
                 id="isSeller"
                 type="checkbox"
                 checked={isSeller}
                 onChange={(e) => setIsSeller(e.target.checked)}
-              ></input>
+              ></input>Is Seller</label>
             </div>
             <div>
-              <label htmlFor="isAdmin">Is Admin</label>
+              <label htmlFor="isAdmin">
               <input
                 id="isAdmin"
                 type="checkbox"
                 checked={isAdmin}
                 onChange={(e) => setIsAdmin(e.target.checked)}
-              ></input>
+              ></input>Is Admin</label>
+            </div>
+            <div>
+              <label htmlFor="isAct">
+              <input
+                id="isAct"
+                type="checkbox"
+                checked={isAct}
+                onChange={(e) => setIsAct(e.target.checked)}
+              ></input>Is Activity</label>
             </div>
             <div>
               <button type="submit" className="primary">

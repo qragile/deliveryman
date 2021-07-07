@@ -22,7 +22,7 @@ export default function OrderHistoryScreen(props) {
         <table className="table">
           <thead>
             <tr>
-              <th>Number</th>
+              <th>ID</th>
               <th>DATE</th>
               <th>TOTAL</th>
               <th>PAID</th>
@@ -33,7 +33,7 @@ export default function OrderHistoryScreen(props) {
           <tbody>
             {orders.map((order) => (
               <tr key={order._id}>
-                <td>{order._id.substring(0, 2)}</td>
+                <td>{order._id}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
                 <td>{order.totalPrice.toFixed(2)}</td>
                 <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>

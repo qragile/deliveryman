@@ -72,7 +72,7 @@ export default function ProductListScreen(props) {
       <div className="row">
         <h1>Services</h1>
         <button type="button" className="primary" onClick={createHandler}>
-          Crear Servicios
+          Crear Productos
         </button>
       </div>
 
@@ -91,7 +91,7 @@ export default function ProductListScreen(props) {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Servicio</th>
+                <th>Producto</th>
                 <th>Precio</th>
                 <th>Categoria</th>
                 <th>Origen</th>

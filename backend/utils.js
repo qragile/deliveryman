@@ -58,6 +58,13 @@ export const isSellerOrAdmin = (req, res, next) => {
     res.status(401).send({ message: 'Invalid Admin/Seller Token' });
   }
 };
+export const isDelivery = (req, res, next) => {
+  if (req.user && (req.user.isDelivery || req.user.isAdmin)) {
+    next();
+  } else {
+    res.status(401).send({ message: 'Invalid Delivery Token' });
+  }
+};
 
 export const mailgun = () =>
   mg({

@@ -8,6 +8,8 @@ import productRouter from './routers/productRouter.js';
 import userRouter from './routers/userRouter.js';
 import orderRouter from './routers/orderRouter.js';
 import uploadRouter from './routers/uploadRouter.js'; /* import { Console } from 'console'; */
+import meliRouter from './routers/meliRouter.js';
+import scannerRouter from './routers/scannerRouter.js';
 
 dotenv.config();
 
@@ -31,6 +33,8 @@ mongoose.connect(process.env.MONGODB_URL ||
   useCreateIndex: true,
 });
 app.use('/api/uploads', uploadRouter);
+app.use('/api/scanners', scannerRouter);
+app.use('/api/melis', meliRouter);
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/orders', orderRouter);

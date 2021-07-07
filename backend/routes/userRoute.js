@@ -1,6 +1,6 @@
 import express from 'express';
 import User from '../models/userModel';
-import { getToken, isAuth } from '../util';
+import { getToken, isAuth, isMeli } from '../util';
 
 const router = express.Router();
 
@@ -37,6 +37,7 @@ router.post('/signin', async (req, res) => {
       isAdmin: signinUser.isAdmin,
       token: getToken(signinUser),
     });
+   
   } else {
     res.status(401).send({ message: 'Invalid Email or Password.' });
   }
@@ -65,8 +66,12 @@ router.post('/register', async (req, res) => {
 router.get('/createadmin', async (req, res) => {
   try {
     const user = new User({
-      name: 'Basir',
-      email: 'admin@example.com',
+      name: 'Edgar',
+      email: 'Edgar.gonzalez@qragile.com.uy',
+      isAdmin: true,
+      isSeller: true,
+      isDelivery: true,
+      license: 'licencia universal ecovoy2021',
       password: '1234',
       isAdmin: true,
     });

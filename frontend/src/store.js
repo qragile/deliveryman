@@ -12,16 +12,6 @@ import {
   orderSummaryReducer,
 } from './reducers/orderReducers';
 import {
-  deliveryCreateReducer,
-  deliveryDeleteReducer,
-  deliveryDeliverReducer,
-  deliveryDetailsReducer,
-  deliveryListReducer,
-  deliveryMineListReducer,
-  deliveryPayReducer,
-  deliverySummaryReducer,
-} from './reducers/deliveryReducers';
-import {
   productCategoryListReducer,
   productCreateReducer,
   productDeleteReducer,
@@ -41,6 +31,11 @@ import {
   userUpdateProfileReducer,
   userUpdateReducer,
 } from './reducers/userReducers';
+import {
+  scannerCreateReducer,
+  scannerDeleteReducer,
+  scannerListReducer,
+} from './reducers/scannerReducers';
 
 const initialState = {
   userSignin: {
@@ -77,9 +72,6 @@ const reducer = combineReducers({
   orderList: orderListReducer,
   orderDelete: orderDeleteReducer,
   orderDeliver: orderDeliverReducer,
-  deliveryList: deliveryListReducer,
-  deliveryDelete: deliveryDeleteReducer,
-  deliveryDeliver: deliveryDeliverReducer,
   userList: userListReducer,
   userDelete: userDeleteReducer,
   userTopSellersList: userTopSellerListReducer,
@@ -87,6 +79,9 @@ const reducer = combineReducers({
   productReviewCreate: productReviewCreateReducer,
   userAddressMap: userAddressMapReducer,
   orderSummary: orderSummaryReducer,
+  scannerCreate:scannerCreateReducer,
+  scannerDelete:scannerDeleteReducer,
+  scannerList:scannerListReducer,
 });
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(

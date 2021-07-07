@@ -3,20 +3,43 @@ import bcrypt from 'bcryptjs';
 const data = {
   users: [
     {
-      name: 'Qragile',
-      email: 'edgar.gonzalez@qragile.com',
+      license : 'Text License for  30d',
+      acountNumber: 'Ecovoy-61100 TEXT 30D 2021/2/2 TEXT 30D',
+      nickName : 'GOED2854525',
+      name: 'Edgar',
+      email: 'edgar.gonzalez@qragile.uy',
       password: bcrypt.hashSync('1234', 8),
       isAdmin: true,
+      isDelivery: true,
       isSeller: true,
+      isAct: true,
       seller: {
-        name: 'Puma',
+        name: 'VoltBike',
         logo: '/images/logo1.png',
         description: 'best seller',
         rating: 4.5,
         numReviews: 120,
       },
+      delivery: {
+        shipping  : '4040404040',
+      },
     },
     {
+        license : 'Text License for  30d',
+        acountNumber: 'Ecovoy-61100 TEXT 30D 2021/2/2 TEXT 30D',
+        nickName : 'JSANZIPAR',
+        name: 'Jaime',
+        email: 'jaime@qragile.uy',
+        password: bcrypt.hashSync('1234', 8),
+        isAdmin: true,
+        isDelivery: true,
+        isSeller: true,
+        isAct: true,
+    },
+    {
+      License:' estee ',
+      acountNumber: 'Ecovoy-61100 TEXT 30D 2021/2/2 TEXT 30D',
+      nickName : 'text1',
       name: 'John',
       email: 'user@example.com',
       password: bcrypt.hashSync('1234', 8),
@@ -25,6 +48,8 @@ const data = {
   ],
   products: [
     {
+      license : 'Text License for  30d',
+      acountNumber: 'Ecovoy-61100 TEXT 30D 2021/2/2 TEXT 30D',
       name: 'Nike Slim Shirt',
       category: 'Shirts',
       image: '/images/p1.jpg',
@@ -36,6 +61,8 @@ const data = {
       description: 'high quality product',
     },
     {
+      license : "Text License for  30d",
+      acountNumber: 'Ecovoy-61100 TEXT 30D 2021/2/2 TEXT 30D',
       name: 'Adidas Fit Shirt',
       category: 'Shirts',
       image: '/images/p2.jpg',
@@ -47,6 +74,8 @@ const data = {
       description: 'high quality product',
     },
     {
+      license : 'Text License for  30d',
+      acountNumber: 'Ecovoy-61100 TEXT 30D 2021/2/2 TEXT 30D',
       name: 'Lacoste Free Shirt',
       category: 'Shirts',
       image: '/images/p3.jpg',
@@ -58,6 +87,8 @@ const data = {
       description: 'high quality product',
     },
     {
+      license : 'Text License for  30d',
+      acountNumber: 'Ecovoy-61100 TEXT 30D 2021/2/2 TEXT 30D',
       name: 'Nike Slim Pant',
       category: 'Pants',
       image: '/images/p4.jpg',
@@ -69,6 +100,8 @@ const data = {
       description: 'high quality product',
     },
     {
+      license : 'Text License for  30d',
+      acountNumber: 'Ecovoy-61100 TEXT 30D 2021/2/2 TEXT 30D',
       name: 'Puma Slim Pant',
       category: 'Pants',
       image: '/images/p5.jpg',
@@ -80,6 +113,8 @@ const data = {
       description: 'high quality product',
     },
     {
+      license : 'Text License for  30d',
+      acountNumber: 'Ecovoy-61100 TEXT 30D 2021/2/2 TEXT 30D',
       name: 'Adidas Fit Pant',
       category: 'Pants',
       image: '/images/p6.jpg',

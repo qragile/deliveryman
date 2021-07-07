@@ -11,7 +11,7 @@ import { USER_ADDRESS_MAP_CONFIRM } from '../constants/userConstants';
 import { useDispatch } from 'react-redux';
 
 const libs = ['places'];
-const defaultLocation = { lat: 45.516, lng: -73.56 };
+const defaultLocation = { lat: -34.9048, lng: -56.1369 };
 
 export default function MapScreen(props) {
   const [googleApiKey, setGoogleApiKey] = useState('');

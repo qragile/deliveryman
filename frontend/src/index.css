@@ -1,14 +1,18 @@
 html {
   font-size: 62.5%; /* 16px x 62.5 = 10px = 1rem */
   box-sizing: border-box;
+ 
 }
+
 body {
   margin: 0;
   height: 100vh;
+  background-color: #f8f8f8;
   font-size: 1.6rem;
   font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 #root {
   height: 100%;
@@ -20,6 +24,7 @@ body {
   grid-template-areas:
     'header'
     'main'
+    'body'
     'footer';
   grid-template-columns: 1fr;
   grid-template-rows: 5rem 1fr 5rem;
@@ -27,7 +32,8 @@ body {
 }
 header {
   grid-area: header;
-  background-color: #23d414;
+  background-color: #060706;
+  color: #060706;
 }
 main {
   grid-area: main;
@@ -35,8 +41,8 @@ main {
 }
 footer {
   grid-area: footer;
-  background-color: #23d414;
-  color: #052805;
+  background-color: #060706;
+  color: #f0f0f0;
 }
 /* Common */
 h1 {
@@ -52,7 +58,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #ff8000;
+  color: #02cfaa;
 }
 ul {
   padding: 0;
@@ -85,7 +91,7 @@ button:hover {
   border: 0.1rem #404040 solid;
 }
 button.primary {
-  background-color: #f0c040;
+  background-color: #02cfaa;
 }
 button.block {
   width: 100%;
@@ -100,7 +106,7 @@ header a {
 }
 a.brand {
   color: #ffffff;
-  font-size: 3rem;
+  font-size: 5rem;
   font-weight: bold;
 }
 .badge {
@@ -159,11 +165,11 @@ button.open-sidebar {
   padding: 0.2rem 0.5rem;
   margin: 0 0.5rem;
   background: none;
-  color: #ffffff;
+  color: #efefef;
   cursor: pointer;
 }
 button.open-sidebar:hover {
-  border-color: #ffffff;
+  border-color: #02cfaa;
 }
 aside ul {
   padding: 0;
@@ -287,6 +293,17 @@ img.large {
   font-weight: bold;
 }
 .checkout-steps > div.active {
+  border-top-color: #f08000;
+  color: #f08000;
+}
+.scanner-steps > div {
+  border-top: 0.3rem #c0c0c0 solid;
+  color: #c0c0c0;
+  flex: 1;
+  padding: 1rem;
+  font-weight: bold;
+}
+.scanner-steps > div.active {
   border-top-color: #f08000;
   color: #f08000;
 }
@@ -466,4 +483,11 @@ img.large {
 }
 .support-users .unread {
   background-color: #f02020;
+}
+.FSincroniza {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  margin-left: -25px;
+  margin-top: -10px;
 }

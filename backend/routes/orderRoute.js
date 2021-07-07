@@ -47,6 +47,14 @@ router.post("/", isAuth, async (req, res) => {
   res.status(201).send({ message: "New Order Created", data: newOrderCreated });
 });
 
+router.post("/head", isAuth, async (req, res) => {
+  const newOrder = new Order({
+    orderHead: req.body.orderHead,
+  });
+  const newOrderCreated = await newOrder.save();
+  res.status(201).send({ message: "New Order Created", data: newOrderCreated });
+});
+
 router.put("/:id/pay", isAuth, async (req, res) => {
   const order = await Order.findById(req.params.id);
   if (order) {
