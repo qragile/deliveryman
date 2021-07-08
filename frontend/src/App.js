@@ -116,7 +116,7 @@ function App() {
                 </Link>
                 <ul className="dropdown-content">
                   <li>
-                    <Link to="/scanner">Scanner QR</Link>
+                    <Link to="/scanner">to Cross Docking</Link>
                   </li>
                   <li>
                     <Link to="/scannerList/load">Cross Docking</Link>
