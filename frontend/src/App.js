@@ -117,13 +117,16 @@ function App() {
                 <ul className="dropdown-content">
                 
                   <li>
-                    <Link to="/scanner">Load</Link>
+                    <Link to="/scanner">Scanner QR</Link>
                   </li>
                   <li>
-                    <Link to="/scannerList/load">List Load</Link>
+                    <Link to="/scannerList/load">Cross Docking List</Link>
                   </li>
                   <li>
-                    <Link to="/scannerList/delivery">Delivery</Link>
+                    <Link to="/scannerList/onway">On the Way</Link>
+                  </li>
+                  <li>
+                    <Link to="/scannerList/delivered">Delivered</Link>
                   </li>
                 </ul>
               </div>
