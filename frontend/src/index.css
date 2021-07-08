@@ -273,7 +273,7 @@ img.large {
   position: absolute;
   display: none;
   right: 0;
-  min-width: 12rem;
+  min-width: 15rem;
   padding: 1rem;
   z-index: 2;
   background-color: #cadef1;
