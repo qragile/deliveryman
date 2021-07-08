@@ -10,6 +10,7 @@ const scannerSchema = new mongoose.Schema(
     dateLoad: { type: Date },
     userDelivery:  { type: String},
     dateDelivery: { type: Date },
+    status : { type: String },
   },
   {
     timestamps: true,

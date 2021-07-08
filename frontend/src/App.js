@@ -122,10 +122,10 @@ function App() {
                     <Link to="/scannerList/load">Cross Docking</Link>
                   </li>
                   <li>
-                    <Link to="/scannerList/onway">On the Way</Link>
+                    <Link to="/scanner">On the Way</Link>
                   </li>
                   <li>
-                    <Link to="/scannerList/delivered">Delivered</Link>
+                    <Link to="/scannerList/load">Delivered</Link>
                   </li>
                 </ul>
               </div>
