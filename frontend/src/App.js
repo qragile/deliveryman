@@ -115,12 +115,11 @@ function App() {
                   Delivery <i className="fa fa-caret-down"></i>
                 </Link>
                 <ul className="dropdown-content">
-                
                   <li>
                     <Link to="/scanner">Scanner QR</Link>
                   </li>
                   <li>
-                    <Link to="/scannerList/load">Cross Docking List</Link>
+                    <Link to="/scannerList/load">Cross Docking</Link>
                   </li>
                   <li>
                     <Link to="/scannerList/onway">On the Way</Link>
