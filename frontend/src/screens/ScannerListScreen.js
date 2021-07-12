@@ -40,6 +40,7 @@ export default function ScannerListScreen(props) {
                 <th>Shipping</th>
                 <th>Sender id</th>
                 <th>UserLoad</th>
+                <th>Date Load</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -49,6 +50,7 @@ export default function ScannerListScreen(props) {
                   <td>{scanner.id}</td>
                   <td>{scanner.sender_id}</td>
                   <td>{scanner.userLoad}</td>
+                  <td>{scanner.daleLoad}</td>
                 </tr>
               ))}
             </tbody>
