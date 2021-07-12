@@ -50,7 +50,7 @@ export default function ScannerListScreen(props) {
                   <td>{scanner.id}</td>
                   <td>{scanner.sender_id}</td>
                   <td>{scanner.userLoad}</td>
-                  <td>{scanner.daleLoad}</td>
+                  <td>{scanner.dateLoad}</td>
                 </tr>
               ))}
             </tbody>
