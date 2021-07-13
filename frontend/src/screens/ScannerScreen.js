@@ -1,21 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ScannerSteps from '../components/ScannerSteps'
+ 
 import QRCode from 'qrcode';
 import QrReader from 'react-qr-reader';
 import { createScanner } from '../actions/scannerActions';
 import { SCANNER_CREATE_RESET } from '../constants/scannerConstants';
-import { json } from 'body-parser';
+ 
 
 export default function ScannerScreen(props) {
   const qr = useSelector((state) => state.qr);
   const scannerCreate = useSelector((state) => state.scannerCreate);
   const { loading, success, error, scanner } = scannerCreate;
-  const [id, setId] = useState('');
-  const [sender_id, setSenderId] = useState('');
-  const [hash_code, setHashCode] = useState(false);
-  const [security_digit, setSecurityDigit] = useState(false);
-  const [text, setText] = useState('');
+
+  const text = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [scanResultFile, setScanResultFile] = useState('');
   const [scanResultWebCam, setScanResultWebCam] = useState('');

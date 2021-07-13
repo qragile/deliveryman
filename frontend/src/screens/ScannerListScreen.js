@@ -1,15 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
-import {
-  createScanner,
-  deleteScanner,
-  listScanners,
-} from '../actions/scannerActions';
+import { listScanners } from '../actions/scannerActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import {
-  SCANNER_CREATE_RESET,
   SCANNER_DELETE_RESET,
 } from '../constants/scannerConstants';
 
@@ -39,7 +33,7 @@ export default function ScannerListScreen(props) {
                 <th>Sender id</th>
                 <th>UserLoad</th>
                 <th>Date Load</th>
-                <th>Action</th>
+              
               </tr>
             </thead>
             <tbody>

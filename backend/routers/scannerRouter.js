@@ -43,7 +43,6 @@ scannerRouter.post(
         userDelivery: req.body.userDelivery,
         dateDelivery: req.body.dateDelivery,
         status: req.body.status,
-        
       });
       const createScanner = await scanner.save();
       res

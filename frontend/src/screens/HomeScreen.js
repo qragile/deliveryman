@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { Carousel } from 'react-responsive-carousel';
+
 import Scanner from '../components/Scanner';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { useDispatch, useSelector } from 'react-redux';
 import { listScanners } from '../actions/scannerActions';
 
-import { Link } from 'react-router-dom';
+
 
 export default function HomeScreen() {
   const dispatch = useDispatch();

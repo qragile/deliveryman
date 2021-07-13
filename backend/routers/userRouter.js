@@ -3,7 +3,7 @@ import expressAsyncHandler from 'express-async-handler';
 import bcrypt from 'bcryptjs';
 import data from '../data.js';
 import User from '../models/userModel.js';
-import { generateToken, isAdmin, isAuth } from '../utils.js';
+import { generateToken, genToken, isAdmin, isAuth } from '../utils.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -38,6 +38,7 @@ userRouter.post('/signin',expressAsyncHandler(async (req, res) => {
           isDelivery: user.isDelivery,
           isMeli: user.isMeli,
           token: generateToken(user),
+          token2: genToken(opts, callback),
         });
         return;
       }

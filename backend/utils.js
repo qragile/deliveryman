@@ -1,7 +1,9 @@
 import jwt from 'jsonwebtoken';
+import Axios from 'axios';
 import mg from 'mailgun-js';
 
 export const generateToken = (user) => {
+  console.log("antes del JWT token utils.js");
   return jwt.sign(
     {
       _id: user._id,
@@ -133,4 +135,36 @@ export const payOrderEmailTemplate = (order) => {
   Thanks for shopping with us.
   </p>
   `;
+};
+export const genToken = (opts, callback) => 
+async (dispatch, getState) =>
+{
+  opts = opts || {};
+  let postBody = null;
+  let pathParams = {};
+  let queryParams = {};
+  let headerParams = {};
+  let formParams = {
+    'grant_type': process.env.GRANTTYPE,
+    'client_id': process.env.APP_ID,
+    'client_secret': process.env.SECRET_KEY,
+    'redirect_uri': process.env.REDIRECT_URI,
+    'code': process.env.CODE,
+    'refresh_token': process.env.REFRESHTOKEN
+  };
+
+  let authNames = [];
+  let contentTypes = ['application/x-www-form-urlencoded'];
+  let accepts = [];
+  let returnType = null;
+  console.log("antes del Axios Post Utils.js");
+  const { data } = await Axios.post(
+    'https://api.mercadolibre.com/oauth/token', {
+    pathParams, queryParams, headerParams, formParams, postBody,
+    authNames, contentTypes, accepts, returnType, callback
+  }, {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+  }); 
 };
