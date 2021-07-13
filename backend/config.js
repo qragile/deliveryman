@@ -15,7 +15,7 @@ export default {
   App_ID : process.env.APP_ID || '5225164571673572',
   Secret_Key : process.env.SECRET_KEY || 'GXdnkvgv1Pqm5gLTGXaV7LHASCrOCy9I',
   Redirect_URI: process.env.REDIRECT_URI || 'https://hidden-meadow-74120.herokuapp.com/api/melis/callbacks',
-  CODE: process.env.CODE || 'TG-60ed9b1bda90340008ba0cd8-736826415',
+  CODE: process.env.CODE || '',
   AccessToken: process.env.ACCESS_TOKEN || 'AccessToken',
   Client_Id : process.env.CLIENT_ID || '5225164571673572',
   RefreshToken: process.env.REFRESHTOKEN || 'Client_Id',
